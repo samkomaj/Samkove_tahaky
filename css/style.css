@@ -38,6 +38,7 @@ a :hover{
     margin-right: 10%;
     width: 80%;
     line-height: 1.5;
+    text-align: center;
 }
 
 .column {
@@ -70,6 +71,7 @@ a :hover{
     font-size: 15px;
     transition: 0.4s;
     font-family: 'Public Pixel', sans-serif;
+    text-align: left;
 }
   
 .active, .accordion:hover {
@@ -84,6 +86,7 @@ a :hover{
     transition: max-height 0.2s ease-out;
     line-height: 1.5;
     font-family: 'Terminal', sans-serif;
+    text-align: left;
 }
 span{
     color: #1645f5;
