@@ -158,6 +158,33 @@
                     </script>
             </div>
 
+            <button class="accordion">P1 users</button>
+            <div class="panel">
+                <p id="copyp1users">
+                    <span>and exists</span> <span style="color: #f0f14e;">(</span><br>
+                    <span>&emsp;select</span> 1<br>
+                    <span>from</span> ent.Devices_organic_EU dev<br><br>
+                    <span>where</span><br>
+                    &emsp;&emsp;dev.identity_identyfier <span>= id</span>.identity_identifier<br>
+                    &emsp;&emsp;<span>and</span> dev.status <span>=</span> <span style="color: #FFA500;">'ACTIVE'</span><br>
+                    &emsp;&emsp;<span>and</span> dev.device_type <span>=</span> <span style="color: #FFA500;">'D0101'</span><br>
+                    <span style="color: #f0f14e;">)</span>
+                    </p>
+
+                    <button class="copy_button" onclick="copyText()">Copy SQL</button>
+
+                    <script>
+                        function copyText() {
+                            var divElement = document.getElementById("copyp1users");
+                            var range = document.createRange();
+                            range.selectNode(divElement);
+                            window.getSelection().addRange(range);
+                            document.execCommand("copy");
+                            alert("Copied!");
+                        }
+                    </script>
+            </div>
+
             <script>
                 var acc = document.getElementsByClassName("accordion");
                 var i;
