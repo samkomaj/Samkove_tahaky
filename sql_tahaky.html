@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>SAMKOVE TAHAKY</title>
+    </head>
+
+    <body>
+
+        <!--LOGIN SCRIPT
+        <script>
+            var password = "zecmi";
+            (function passcodeprotect() {
+                var passcode = prompt("Enter Password");
+                while (passcode !== password) {
+                    alert("Incorrect Password");
+                    return passcodeprotect();
+                }
+            }());
+        </script>-->
+
+        <!--HEADING-->
+        <div class="header">
+            <h3 style="color: #1645f5;">SQL TAHAKY</h3>
+        </div>
+
+        <!--MAIN CONTENT-->
+        <div class="main_menu">
+            <div class="row">
+                <div class="column">
+                    <a href="/conten_tahaky.html" style="color:#6ded8a; text-decoration:none;">
+                        <h2>CONTENT<br>TAHAKY</h2>
+                    </a>
+                </div>
+                <div class="column">
+                    <a href="/sql_tahaky.html" style="color: #ffffff; text-decoration:none;">
+                        <h2>SQL<br>TAHAKAY</h2>
+                    </a>
+                </div>
+                <div class="column">
+                    <a href="/samkove_poznamky.html" style="color: #ff5f85; text-decoration:none;">
+                        <h2>SAMKOVE<br>POZNAMKY</h2>
+                    </a>
+                </div>
+              </div>
+        </div>
+
+        <div class="main_content">
+
+            <p><span style="color: #ed3833;">POZOR !</span> pri kopirovani casti SQL si stale skontroluj krajinu CZ alebo SK v nazvoch DE</p>
+
+            <button class="accordion">EMAIL TEMPLATE + basic conditions</button>
+            <div class="panel">
+                <p id="copytemplate">
+                    <span>select id</span>.identity_identifier,<br>
+                    <span>&emsp;id</span>.first_name,<br>
+                    <span>&emsp;id</span>.email_address,<br>
+                    <span>&emsp;id</span>.referral_code<br><br>
+                
+                    <span>from</span> Identity_Data_Organic_SK <span>id</span><br><br>
+                
+                    <span>where</span> id.database_opt_in <span>=</span> 1<br>
+                        <span>&emsp;and id</span>.global_opt_in <span>=</span> 1<br>
+                        <span>&emsp;and id</span>.email_address <span>is not null</span><br>
+                        <span>&emsp;and id</span>.email_address <span>!=</span> <span style="color: #FFA500;">''</span><br>
+                        <span>&emsp;and id</span>.referral_code <span>is not null</span> <span style="color: #6ded8a;">  //if asked, if not delete</span><br>
+                        <span>&emsp;and id</span>.referral_code <span>!=</span> <span style="color: #FFA500;">''</span><span style="color: #6ded8a;">  //if asked, if not delete</span><br>
+                        <span>&emsp;and id</span>.identity_identifier <span>not in</span> <span style="color: #f0f14e;">(</span><span>select</span> SubscriberKey <span>from</span> _Bounce <span>where</span> BounceCategory = <span style="color: #FFA500;">'Hard bounce'</span><span style="color: #f0f14e;">)</span><br>
+                    </p>
+
+                    <button class="copy_button" onclick="copyText()">Copy SQL</button>
+
+                    <script>
+                        function copyText() {
+                            var divElement = document.getElementById("copytemplate");
+                            var range = document.createRange();
+                            range.selectNode(divElement);
+                            window.getSelection().addRange(range);
+                            document.execCommand("copy");
+                            alert("Copied!");
+                        }
+                    </script>
+            </div>
+        
+            <button class="accordion">EMAIL TEMPLATE + SOURCE</button>
+            <div class="panel">
+                <p id="copysource"><span>select id</span>.identity_identifier,<br>
+                    <span>&emsp;id</span>.first_name,<br>
+                    <span>&emsp;id</span>.email_address,<br>
+                    <span>&emsp;id</span>.referral_code<br><br>
+                
+                    <span>from</span> Identity_Data_Organic_SK <span>id</span><br><br>
+
+                    <span>join</span> <span style="color: #ed3833;">YOUR_SOURCE_DE_SOURCE</span> s <span>on id</span>.identity_identifier = s.identity_identifier<br><br>
+                
+                    <span>where</span> id.database_opt_in <span>=</span> 1<br>
+                        <span>&emsp;and id</span>.global_opt_in <span>=</span> 1<br>
+                        <span>&emsp;and id</span>.email_address <span>is not null</span><br>
+                        <span>&emsp;and id</span>.email_address <span>!=</span> <span style="color: #FFA500;">''</span><br>
+                        <span>&emsp;and id</span>.referral_code <span>is not null</span> <span style="color: #6ded8a;">  //if asked, if not delete</span><br>
+                        <span>&emsp;and id</span>.referral_code <span>!=</span> <span style="color: #FFA500;">''</span><span style="color: #6ded8a;">  //if asked, if not delete</span><br>
+                        <span>&emsp;and id</span>.identity_identifier <span>not in</span> <span style="color: #f0f14e;">(</span><span>select</span> SubscriberKey <span>from</span> _Bounce <span>where</span> BounceCategory = <span style="color: #FFA500;">'Hard bounce'</span><span style="color: #f0f14e;">)</span><br>
+                </p>
+
+                    <button class="copy_button" onclick="copyText()">Copy SQL</button>
+
+                    <script>
+                        function copyText() {
+                            var divElement = document.getElementById("copysource");
+                            var range = document.createRange();
+                            range.selectNode(divElement);
+                            window.getSelection().addRange(range);
+                            document.execCommand("copy");
+                            alert("Copied!");
+                        }
+                    </script>
+            </div>
+
+            <button class="accordion">SMS/VIBER TEMPLATE + basic conditions + 1 SMS per number</button>
+            <div class="panel">
+                <p id="copysmstemplate">
+                    <span>select main</span>.identity_identifier,<br>
+                    <span>&emsp;main</span>.first_name,<br>
+                    <span>&emsp;main</span>.sms_phone_number,<br>
+                    <span>&emsp;main</span>.locale<br><br>
+
+                    <span>from</span> <span style="color: #f0f14e;">(</span><br><br>
+                    <span>select <br>
+                        &emsp;id</span>.identity_identifier,<br>
+                    <span>&emsp;id</span>.first_name,<br>
+                    <span>&emsp;id</span>.sms_phone_number,<br>
+                    <span>&emsp;id</span>.locale<br>
+                    ROW_NUMBER<span style="color: #ff5f85;">()</span> OVER<span style="color: #ff5f85;">(</span><span>partition by id</span>.sms_phone_number <span>order by id</span>.identity_identifier <span>desc</span><span style="color: #ff5f85;">)</span> <span>as</span> rownum<br><br>
+                
+                    <span>from</span> Identity_Data_Organic_SK <span>id</span><br><br>
+                
+                    <span>where</span> id.database_opt_in <span>=</span> <span style="color: #FFA500;">'true'</span><br>
+                        <span>&emsp;and id</span>.global_opt_in <span>=</span> <span style="color: #FFA500;">'true'</span><br>
+                        <span>&emsp;and id</span>.sms_phone_number <span>is not null</span><br>
+                        <span>&emsp;and id</span>.sms_phone_number <span>!=</span> <span style="color: #FFA500;">''</span><br><br>
+                        <span style="color: #f0f14e;">)</span> main<br><br>
+
+                        <span>where</span> main.rownum <span>=</span> 1
+                    </p>
+
+                    <button class="copy_button" onclick="copyText()">Copy SQL</button>
+
+                    <script>
+                        function copyText() {
+                            var divElement = document.getElementById("copysmstemplate");
+                            var range = document.createRange();
+                            range.selectNode(divElement);
+                            window.getSelection().addRange(range);
+                            document.execCommand("copy");
+                            alert("Copied!");
+                        }
+                    </script>
+            </div>
+
+            <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+                
+                for (i = 0; i < acc.length; i++) {
+                  acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                      panel.style.maxHeight = null;
+                    } else {
+                      panel.style.maxHeight = panel.scrollHeight + "px";
+                    } 
+                  });
+                }
+            </script>
+        </div>
+
+   </body>
+</html>

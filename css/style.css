@@ -1,0 +1,95 @@
+@import url('https://fonts.cdnfonts.com/css/public-pixel');
+@import url('https://fonts.cdnfonts.com/css/terminal');
+
+body{
+    background-color: #000;
+    color: #fff;
+    font-family: 'Public Pixel', sans-serif;
+}
+
+.header{
+    text-align: center;
+    font-family: 'Public Pixel', sans-serif;
+}
+
+.header h1{
+    font-size: 100px;
+    color: #ed3833;
+}
+
+.header h3{
+    font-size: 50px;
+    color: 	#f0f14e;
+}
+
+a :hover{
+    color: #fff;
+}
+
+.main_menu{
+    text-align: center;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+.main_content{
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+    line-height: 1.5;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+  }
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+@media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }
+
+.accordion {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: solid;
+    border-bottom: 1px;
+    border-color: #000;
+    text-align: left;
+    font-size: 15px;
+    transition: 0.4s;
+    font-family: 'Public Pixel', sans-serif;
+}
+  
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+  
+.panel {
+    padding: 0 18px;
+    background-color: #000;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    line-height: 1.5;
+    font-family: 'Terminal', sans-serif;
+}
+span{
+    color: #1645f5;
+}
+
+.copy_button{
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
